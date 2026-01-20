@@ -246,7 +246,7 @@ Take the Unix and BEDtools commands you ran interactively (Steps 4–6) and plac
 - **Save** your changes to the BED_overlap.sh script!
 - Then, **move** your modified BED_overlap.sh script to the HPC somehow
  - Two options: 
- 1. Use GitHub: `add` `commit` and `push` changes to your repo, then `clone` or `pull` those changes to your HPC account - highly reproducible, uses GitHub to mirror your work and keeps a record of changes.
+ 1. Use GitHub: `add` `commit` and `push` changes to your repo, then `clone` or `pull` those changes to your HPC account (using HTTPS link on HPC account) - highly reproducible, uses GitHub to mirror your work and keeps a record of changes.
  2. Use scp: `scp` the BED_overlap script from local to HPC workspace, the same way you did with the *.bed files earlier - quicker, but less reproducible because local and HPC workspaces may not match exactly, changes not recorded in your `git log`, and no opportunity to `git checkout` previous versions in future.
 - Then, **submit** and monitor on the HPC:
 ```bash
