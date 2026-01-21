@@ -28,14 +28,13 @@ You have two BED files representing indel features from two populations:
 
 **Bioinformatics_Onboarding,** including:
 - Command-line basics
-- SSH key setup
-- Git and GitHub workflows
+- local SSH key setup
+- HPC Access Token setup
 **Session_1**
 - HPC
 - Unix commands (e.g. `grep`, `awk`, `sed`)
 - `man` and other help options (e.g. -h, --help, etc.)
-**Pre-workshop material for Session_2,** namely:
-- SLURM scripts
+**Pre-workshop material for Session_2,** 
 
 ## (Don't panic) Here's a reminder to catch you up:
 - **Bash script:** a plain-text file of shell commands that you can run to automate tasks.
@@ -46,11 +45,11 @@ You have two BED files representing indel features from two populations:
 
 ## A suggested workflow 
 
-### Step -1: Have your SSH keys set up in your local and HPC home directories (instructions in [Bioinformatics_onboarding](https://github.com/karlgrieshop/Bioinformatics_Onboarding)).
+### Step -1: Have your SSH keys set up on your local home directory and Access Token set up on your HPC home directory (instructions in [Bioinformatics_onboarding](https://github.com/karlgrieshop/Bioinformatics_Onboarding)).
 
 ---
 
-### Step 0: Fork this BED_overlap repo to your own GitHub account and Clone your forked copy to somewhere on your local machine (using the SSH link)
+### Step 0: Fork this BED_overlap repo to your own GitHub account and Clone your forked copy to somewhere on your local machine (use SSH link when cloning via SSH key, use HTTPS when cloning via Access Token)
 
 ```bash
 cd <where_you_want_it>
