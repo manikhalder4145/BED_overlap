@@ -12,13 +12,13 @@
 
 ## Overview
 
-In this tutorial, you'll compare indel (insertion/deletion) features between two *Drosophila melanogaster* populations using both Unix command-line tools and BEDtools.
+In this tutorial, you'll compare indel (insertion/deletion) features between two *Drosophila melanogaster* populations using both Unix command-line tools and bedtools.
 
 You have two BED files representing indel features from two populations:
 - `DPure_indels_mask.bed` – indels from the 'D' population
 - `LPure_indels_mask.bed` – indels from the 'L' population
 
-**Your task:** Find the overlapping indels between these two populations, and compare the reproducibility and clarity of using ad-hoc Unix commands versus a standardised tool (BEDtools).
+**Your task:** Find the overlapping indels between these two populations, and compare the reproducibility and clarity of using ad-hoc Unix commands versus a standardised tool (bedtools).
 
 **Hint:** The term "overlap" is ambiguous by design because there are commonly not right or wrong answers, making it valuable to be able to document exactly what you've done. 
 
@@ -155,11 +155,11 @@ Use the common and powerful Unix commands you've learned (e.g. `awk`, `sort`, `g
 
 ---
 
-### Step 5: Find overlaps using BEDtools (standardised approach)
+### Step 5: Find overlaps using bedtools (standardised approach)
 
-BEDtools is a standardised suite of tools for genome arithmetic. It provides reproducible, well-documented methods for genomic feature overlap.
+bedtools is a standardised suite of tools for genome arithmetic. It provides reproducible, well-documented methods for genomic feature overlap.
 
-**Check if BEDtools is on the HPC:**
+**Check if bedtools is on the HPC:**
 ```bash
 ssh <abc12xyz>@hali.uea.ac.uk
 interactive-bio-ds
@@ -167,11 +167,11 @@ module avail
 module keyword bed
 ```
 
-**Yes, it is, explore BEDtools (must load it first)**
+**Yes, it is, explore bedtools (must load it first)**
 ```bash
 module load bedtools
 bedtools --help
-# Hey, check out that first BEDtools command listed.
+# Hey, check out that first bedtools command listed.
 # "intersect     Find overlapping ..."
 # Sounds relvant, no? Explore that further.
 bedtools intersect --help
@@ -180,7 +180,10 @@ bedtools intersect --help
 # "Usage:   bedtools intersect [OPTIONS] -a <bed/gff/vcf/bam> -b <bed/gff/vcf/bam>"
 ```
 
-**Run BEDtools to find overlaps:**
+**Look at the online documentation:**
+- [bedtools intersect](https://bedtools.readthedocs.io/en/latest/content/tools/intersect.html). The cartoon illustration of the tool shows the "A" and "B" tracks, analagous to the two tracks of BED files you looked at on IGV. Imagine how the two alternative settings would work.
+
+**Run bedtools intersect under default settings to find overlaps:**
 ```bash
 # Recall you put the *.bed flies in ~/scratch/where_you_put_it/
 # You'll either need to be in that directory, or include it in your file_names:
@@ -207,7 +210,7 @@ Notes:
      # ...your_unix_pipeline... | wc -l
      ```
 
-2. **BEDtools method:** How many overlaps did BEDtools report? Is it the same as your Unix result?
+2. **bedtools method:** How many overlaps did bedtools report? Is it the same as your Unix result?
    - If you saved the output in Step 5:
      ```bash
      wc -l overlapping_indels.bed
@@ -237,7 +240,7 @@ Notes:
 
 **A functional script ramps up the reprodcibility to another level because it's an exact record of the actual code that was run (not just some notes on the side).**
 
-Take the Unix and BEDtools commands you ran interactively (Steps 4–6) and place them into the SLURM scaffold:
+Take the Unix and bedtools commands you ran interactively (Steps 4–6) and place them into the SLURM scaffold:
 `SLURM_scripting/BED_overlap.sh`
 
 - Open the script **locally** in VS Code and fill the TODO lines (paths, email, your commands, etc., **hint:** `Ctl+f` (or `Cmd+f)` "TODO").
@@ -262,7 +265,7 @@ tail -n 20 output/comparison_summary.txt  # quick check
 ### Step 8: Document your findings
 
 Make some brief notes (Markdown or text file) that includes:
-1. **Methods:** Describe your Unix approach and your BEDtools approach in clear language.
+1. **Methods:** Describe your Unix approach and your bedtools approach in clear language.
 2. **Results:** Number of overlapping indels found by each method.
 3. **Comparison:** Were results identical? Why or why not?
 4. **Reflection:** Which approach is more suitable for reproducible research? Why does standardised software matter?
@@ -271,7 +274,7 @@ Commit this report to your local BED_overlap repo and push it to GitHub:
 ```bash
 # From within the repo
 git add report.md       # or git add --all
-git commit -m "BED_overlap complete: Analysis and comparison of Unix vs BEDtools"
+git commit -m "BED_overlap complete: Analysis and comparison of Unix vs bedtools"
 git push origin main
 ```
 
@@ -279,7 +282,7 @@ git push origin main
 
 ## Key Takeaway
 
-**Standardised bioinformatics software (like BEDtools) provides:**
+**Standardised bioinformatics software (like bedtools) provides:**
 - **Reproducibility:** Version control and documentation.
 - **Scalability:** Efficient algorithms designed for large genomic datasets.
 - **Credibility:** Methods reviewers can trust and validate.
